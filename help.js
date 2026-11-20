@@ -1,10 +1,12 @@
 "use strict";
 // Shows the extension's current shortcuts (including any the user has changed) in a small popup.
-const A = typeof messenger !== "undefined" ? messenger : browser;
+// Our connection to Thunderbird's extension API. Thunderbird provides it under two names, "messenger" and "browser"; use whichever exists.
+const api = typeof messenger !== "undefined" ? messenger : browser;
+// Fills the shortcut table: one row per command, with its current key (as set in Manage Extension Shortcuts) and description.
 (async function () {
   const t = document.getElementById("t");
   try {
-    const cmds = await A.commands.getAll();
+    const cmds = await api.commands.getAll();
     for (const c of cmds) {
       if (!c.description) continue;                       // skip the built-in action commands
       const tr = document.createElement("tr");

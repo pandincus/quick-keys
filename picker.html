@@ -23,6 +23,8 @@ body{display:flex;flex-direction:column;box-sizing:border-box;padding:10px 12px;
 <div id="head"><span><b id="title"></b></span><span id="count"></span></div>
 <input id="q" type="text" autocomplete="off" spellcheck="false" placeholder="Type to filter...">
 <ul id="list"></ul>
+<!-- one row of the list; picker.js copies this and fills in the text -->
+<template id="row"><li><span class="st"></span><span class="dot"></span><span class="nm"></span><span class="sub"></span></li></template>
 <div id="foot">Up/Down to choose &middot; Enter to apply &middot; Shift+Enter to apply and keep open &middot; Esc to cancel</div>
 <script src="picker.js"></script>
 </body></html>

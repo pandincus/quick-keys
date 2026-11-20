@@ -16,9 +16,11 @@ Keyboard shortcuts for fast inbox triage in Thunderbird. Select some messages, p
 
 Inside either picker: type to filter (the first letters of a word are enough), **Up/Down** to move the highlight, **Enter** to apply, **Esc** to cancel.
 
+**Large selections:** a shortcut acts on up to 10,000 selected messages. If you select more than that (Ctrl+A on a huge folder, say), only the first part of the selection is used. Messages are read in pages, so the actual number can run a little over 10,000. The limit is the `MAX_MESSAGES` constant at the top of `background.js`.
+
 ![Move picker](screenshots/move-picker.png)
 
-Thunderbird's own shortcuts are untouched: **A** archives, **Delete** deletes, **T** jumps to the next unread thread, and **1 to 9** toggle the first nine tags. Quick Keys fills the gap for everything beyond them: any tag by name, any folder by name.
+Thunderbird's default shortcuts are untouched, and in fact are intended to work with this add-on. For example, **A** archives, **Delete** deletes, **T** jumps to the next unread thread, **arrow keys** move up and down, and **1 to 9** toggle the first nine tags. I didn't want to replace that functionality with Quick Keys, just expand on it: any tag by name (I did not want to memorize tags by number), any folder by name.
 
 ![Shortcut hints](screenshots/shortcut-hints.png)
 
@@ -34,7 +36,7 @@ Thunderbird's own shortcuts are untouched: **A** archives, **Delete** deletes, *
 - From the Thunderbird add-ons site (once published).
 - Or from source, to try it: Tools, Developer Tools, **Debug Add-ons**, **Load Temporary Add-on**, choose `manifest.json`. A temporary add-on is removed when Thunderbird restarts.
 
-Requires Thunderbird 115 or later.
+Requires Thunderbird 140 or later. It has only been tested on Thunderbird 160. The folder and tag APIs it uses first appeared in Thunderbird 121, so it cannot work on anything older, and 140 (the current Extended Support Release when this was written) is the oldest version I am willing to claim.
 
 ## Why the shortcuts have a modifier key
 
@@ -64,6 +66,8 @@ Nothing leaves your computer. The add-on makes no network requests and collects 
 It uses only Thunderbird's standard WebExtension APIs: no privileged code, no network access.
 
 ## Development
+
+Quick Keys was co-developed with Claude Code (Anthropic's AI coding assistant). I directed the design and reviewed and tested all of the code, and Claude wrote most of it.
 
 Plain JavaScript, no build step, no dependencies. The files in this folder are the add-on. To package it, zip `manifest.json`, `background.js`, `picker.html`, `picker.js`, `help.html`, `help.js`, `options.html`, `options.js`, `icon.svg`, `README.md`, `PRIVACY.md` and `LICENSE`.
 
