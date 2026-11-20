@@ -67,7 +67,7 @@ It uses only Thunderbird's standard WebExtension APIs: no privileged code, no ne
 
 ## Development
 
-Quick Keys was co-developed with Claude Code (Anthropic's AI coding assistant). I directed the design and reviewed and tested all of the code, and Claude wrote most of it.
+For complete disclosure: I developed this through the usage of generative AI, specifically, Claude Sonnet 5.5. I tested all functionality manually, and reviewed the code, making and directing some minor edits.
 
 Plain JavaScript, no build step, no dependencies. The files in this folder are the add-on. To package it, zip `manifest.json`, `background.js`, `picker.html`, `picker.js`, `help.html`, `help.js`, `options.html`, `options.js`, `icon.svg`, `README.md`, `PRIVACY.md` and `LICENSE`.
 
