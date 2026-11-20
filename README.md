@@ -1,29 +1,72 @@
-# Quick Keys: Tag, Move, Mark (Thunderbird add-on)
+# Quick Keys: Tag, Move, Mark
 
-Keyboard shortcuts for fast inbox triage. Select one or more messages, then:
+Keyboard shortcuts for fast inbox triage in Thunderbird. Select some messages, press a shortcut, **type a few letters, press Enter**. No mouse needed.
 
-| Default shortcut | What it does |
+![Tag picker](screenshots/tag-picker.png)
+
+## What it does
+
+| Default shortcut | Action |
 |---|---|
-| **Ctrl+Alt+L** | Tag picker: type part of a tag name, **Enter** toggles it on the selected messages (Shift+Enter keeps the picker open to add several) |
-| **Ctrl+Alt+V** | Move picker: type part of a folder name, **Enter** moves the selected messages there. Recently used folders come first |
-| **Ctrl+Alt+I** | Mark as read |
-| **Ctrl+Alt+U** | Mark as unread |
-| **F1** | Show the current shortcuts |
+| **Ctrl+Alt+L** | **Tag picker.** Type part of a tag name and press **Enter** to toggle that tag on the selected messages. Tags the messages already have are ticked. **Shift+Enter** applies the tag and keeps the picker open, so you can add several. |
+| **Ctrl+Alt+V** | **Move picker.** Type part of a folder name and press **Enter** to move the selected messages there. Recently used folders are listed first. |
+| **Ctrl+Alt+I** | Mark the selected messages as **read**. |
+| **Ctrl+Alt+U** | Mark the selected messages as **unread**. |
+| **F1** | Show a list of the current shortcuts. |
 
-Thunderbird's own shortcuts (A to archive, Delete, T, 1 to 9 for the first nine tags) are untouched.
+Inside either picker: type to filter (the first letters of a word are enough), **Up/Down** to move the highlight, **Enter** to apply, **Esc** to cancel.
 
-Change any shortcut under Add-ons and Themes, gear menu, **Manage Extension Shortcuts**. F1 always shows the current bindings.
-Options (add-on preferences): keep the tag picker open after applying a tag; only offer folders from the selected messages' account.
+![Move picker](screenshots/move-picker.png)
+
+Thunderbird's own shortcuts are untouched: **A** archives, **Delete** deletes, **T** jumps to the next unread thread, and **1 to 9** toggle the first nine tags. Quick Keys fills the gap for everything beyond them: any tag by name, any folder by name.
+
+![Shortcut hints](screenshots/shortcut-hints.png)
+
+## Customizing
+
+- **Change a shortcut:** Add-ons and Themes, the gear menu, **Manage Extension Shortcuts**. The F1 window always shows the keys you currently have.
+- **Options** (Add-ons and Themes, Quick Keys, Preferences):
+  - keep the tag picker open after applying a tag;
+  - only offer folders from the same account as the selected messages.
+
+## Install
+
+- From the Thunderbird add-ons site (once published).
+- Or from source, to try it: Tools, Developer Tools, **Debug Add-ons**, **Load Temporary Add-on**, choose `manifest.json`. A temporary add-on is removed when Thunderbird restarts.
+
+Requires Thunderbird 115 or later.
+
+## Why the shortcuts have a modifier key
+
+Thunderbird's extension shortcut system does not allow plain letters (function keys are the exception), so single-key shortcuts like Gmail's are not possible for a standard add-on. The defaults use **Ctrl+Alt+letter** because Alt+letter combinations collide with Thunderbird's menu access keys (Alt+V opens the View menu, for example) and Alt+Shift combinations were ignored in the message list during testing.
+
+## Troubleshooting
+
+- **A shortcut does nothing:** check Manage Extension Shortcuts for a conflict or an empty field. After reinstalling the add-on you may need to set the keys again.
+- **The picker says it can't see any messages:** click a message in the list first. It works with a message selected in the list and with a message open in its own tab or window.
+- **F1 opens Thunderbird's Help instead:** rebind "Show the list of Quick Keys shortcuts" in Manage Extension Shortcuts.
 
 ## Privacy
-Nothing leaves your computer. The add-on makes no network requests, collects no data, and only stores two settings and a short list of recently used folders in Thunderbird's local add-on storage. See PRIVACY.md.
+
+Nothing leaves your computer. The add-on makes no network requests and collects no data. It stores two settings and the ids of up to eight recently used folders in Thunderbird's local add-on storage. See [PRIVACY.md](PRIVACY.md).
 
 ## Permissions, and why
-`accountsRead`, `accountsFolders` (list folders for the move picker) - `messagesRead` (see which messages are selected and their tags) - `messagesMove` (move) - `messagesUpdate` (mark read/unread, set tags) - `messagesTags`, `messagesTagsList` (list the tags) - `storage` (settings and recent folders).
 
-## Status
-Version 0.2.0, untested in a published release. Written for Thunderbird 115 and later (MV2 WebExtension, no privileged code).
-Shortcuts need a modifier key because Thunderbird's extension shortcut system does not allow plain letters (F-keys excepted).
+| Permission | Why |
+|---|---|
+| `accountsRead`, `accountsFolders` | list your folders for the move picker |
+| `messagesRead` | see which messages are selected, and their tags |
+| `messagesMove` | move messages |
+| `messagesUpdate` | mark read or unread; set tags |
+| `messagesTags`, `messagesTagsList` | list your tags |
+| `storage` | save the two settings and the recent-folder list |
+
+It uses only Thunderbird's standard WebExtension APIs: no privileged code, no network access.
+
+## Development
+
+Plain JavaScript, no build step, no dependencies. The files in this folder are the add-on. To package it, zip `manifest.json`, `background.js`, `picker.html`, `picker.js`, `help.html`, `help.js`, `options.html`, `options.js`, `icon.svg`, `README.md`, `PRIVACY.md` and `LICENSE`.
 
 ## License
-MIT. See LICENSE.
+
+MIT. See [LICENSE](LICENSE).
