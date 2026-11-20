@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quick Keys</title>
+<style>
+:root{--bg:#fafafa;--fg:#1c1c1e;--mut:#6b6b73;--line:#d6d6db;--sel:#dbe7ff;--acc:#2f6fdb;--ok:#1a7f43;--bad:#c0392b}
+@media (prefers-color-scheme:dark){:root{--bg:#1d1e22;--fg:#ececf0;--mut:#9a9aa5;--line:#3a3c43;--sel:#2c3a5c;--acc:#7aa7ff;--ok:#5ac487;--bad:#ff8a7a}}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font:14px/1.4 system-ui,"Segoe UI",sans-serif}
+body{display:flex;flex-direction:column;box-sizing:border-box;padding:10px 12px;gap:8px}
+#head{display:flex;justify-content:space-between;align-items:baseline;color:var(--mut);font-size:12.5px}
+#head b{color:var(--fg);font-size:14px}
+#q{width:100%;box-sizing:border-box;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);font:inherit;outline:none}
+#q:focus{border-color:var(--acc)}
+#list{list-style:none;margin:0;padding:0;overflow-y:auto;flex:1;border:1px solid var(--line);border-radius:8px}
+#list li{display:flex;align-items:center;gap:8px;padding:6px 10px;cursor:pointer;border-bottom:1px solid var(--line)}
+#list li:last-child{border-bottom:0}
+#list li.sel{background:var(--sel)}
+.dot{width:10px;height:10px;border-radius:50%;flex:none}
+.nm{font-weight:600}.sub{color:var(--mut);font-size:12.5px;margin-left:auto;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55%}
+.st{width:18px;text-align:center;color:var(--ok);font-weight:700;flex:none}
+#foot{color:var(--mut);font-size:12px;min-height:1.3em}
+#foot.bad{color:var(--bad)}#foot.ok{color:var(--ok)}
+</style></head><body>
+<div id="head"><span><b id="title"></b></span><span id="count"></span></div>
+<input id="q" type="text" autocomplete="off" spellcheck="false" placeholder="Type to filter...">
+<ul id="list"></ul>
+<!-- one row of the list; picker.js copies this and fills in the text -->
+<template id="row"><li><span class="st"></span><span class="dot"></span><span class="nm"></span><span class="sub"></span></li></template>
+<div id="foot">Up/Down to choose &middot; Enter to apply &middot; Shift+Enter to apply and keep open &middot; Esc to cancel</div>
+<script src="picker.js"></script>
+</body></html>

@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quick Keys options</title>
+<style>
+:root{--bg:transparent;--fg:inherit;--mut:#6b6b73}
+@media (prefers-color-scheme:dark){:root{--mut:#9a9aa5}}
+body{font:14px/1.5 system-ui,"Segoe UI",sans-serif;margin:0;padding:12px 4px}
+label{display:flex;gap:8px;align-items:flex-start;margin:0 0 10px}
+.hint{color:var(--mut);font-size:12.5px;display:block}
+p.k{color:var(--mut);margin:14px 0 0;font-size:12.5px}
+</style></head><body>
+<label><input type="checkbox" id="keepTagOpen"><span>Keep the tag picker open after applying a tag
+<span class="hint">Off by default. You can also hold Shift while pressing Enter.</span></span></label>
+<label><input type="checkbox" id="currentAccountOnly"><span>Only offer folders from the same account as the selected messages
+<span class="hint">Hides other accounts' folders in the move picker.</span></span></label>
+<p class="k">To change the keyboard shortcuts: Add-ons and Themes &rarr; the gear menu &rarr; <b>Manage Extension Shortcuts</b>. Press <b>F1</b> in the mail window to see the current list.</p>
+<script src="options.js"></script>
+</body></html>
