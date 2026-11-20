@@ -48,6 +48,12 @@ Thunderbird's extension shortcut system does not allow plain letters (function k
 - **The picker says it can't see any messages:** click a message in the list first. It works with a message selected in the list and with a message open in its own tab or window.
 - **F1 opens Thunderbird's Help instead:** rebind "Show the list of Quick Keys shortcuts" in Manage Extension Shortcuts.
 
+## Known limitations and to do
+
+- **Selections over 10,000 messages are cut off, silently.** If you select more than 10,000 messages, a shortcut acts on only the first part of the selection and does not tell you. To do: make the picker say so clearly when a selection is cut off, so you know the rest was left alone.
+- **The 10,000 limit is not configurable.** It is the `MAX_MESSAGES` constant at the top of `background.js`. To do: make it a setting in the add-on's options.
+- **Only tested on Thunderbird 160.** The minimum is set to 140; see Install.
+
 ## Privacy
 
 Nothing leaves your computer. The add-on makes no network requests and collects no data. It stores two settings and the ids of up to eight recently used folders in Thunderbird's local add-on storage. See [PRIVACY.md](PRIVACY.md).
