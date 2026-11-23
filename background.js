@@ -112,7 +112,7 @@ api.commands.onCommand.addListener(async name => {
       if (open.help !== null) {                  // already showing: bring it to the front instead of opening another
         try { await api.windows.update(open.help, { focused: true }); return; } catch (e) { open.help = null; }
       }
-      await openPopup("help", "help.html", 560, 480);
+      await openPopup("help", api.runtime.getURL("help.html"), 560, 480);
       return;
     }
     if (name === "mark-read") { await markRead(true); return; }
@@ -130,7 +130,7 @@ api.commands.onCommand.addListener(async name => {
       };
     }).catch(e => ({ mode, error: "Quick Keys had a problem: " + (e && e.message ? e.message : e) }));
     await closeIfOpen("picker");                 // a new request replaces any picker that is still open
-    await openPopup("picker", "picker.html?mode=" + mode, 540, 440);
+    await openPopup("picker", api.runtime.getURL("picker.html") + "?mode=" + mode, 540, 440);
   } catch (e) {
     console.error("Quick Keys:", e);
   }

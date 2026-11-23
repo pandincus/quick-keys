@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Quick Keys: Tag, Move, Mark",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Keyboard shortcuts for fast inbox triage: tag or move the selected messages by typing a few letters, mark read or unread, and press F1 for hints.",
   "author": "pandincus",
   "browser_specific_settings": {
@@ -12,11 +12,9 @@
   },
   "permissions": [
     "accountsRead",
-    "accountsFolders",
     "messagesRead",
     "messagesMove",
     "messagesUpdate",
-    "messagesTags",
     "messagesTagsList",
     "storage"
   ],

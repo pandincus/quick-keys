@@ -62,11 +62,11 @@ Nothing leaves your computer. The add-on makes no network requests and collects 
 
 | Permission | Why |
 |---|---|
-| `accountsRead`, `accountsFolders` | list your folders for the move picker |
+| `accountsRead` | list your accounts and folders for the move picker |
 | `messagesRead` | see which messages are selected, and their tags |
 | `messagesMove` | move messages |
-| `messagesUpdate` | mark read or unread; set tags |
-| `messagesTags`, `messagesTagsList` | list your tags |
+| `messagesUpdate` | mark read or unread; set tags on messages |
+| `messagesTagsList` | list your tags for the tag picker |
 | `storage` | save the two settings and the recent-folder list |
 
 It uses only Thunderbird's standard WebExtension APIs: no privileged code, no network access.
