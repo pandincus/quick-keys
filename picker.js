@@ -76,9 +76,9 @@ function render() {
   if (cur && cur.scrollIntoView) cur.scrollIntoView({ block: "nearest" });
 }
 
-/** Fills `items` with every tag Thunderbird knows, sorted by name. (Older versions call the list function something else.) */
+/** Fills `items` with every tag Thunderbird knows, sorted by name. */
 async function loadTags() {
-  const list = api.messages.tags ? await api.messages.tags.list() : await api.messages.listTags();
+  const list = await api.messages.tags.list();
   items = list.map(t => ({ key: t.key, name: String(t.tag || t.key), sub: "", color: t.color }))
     .sort((a, b) => a.name.localeCompare(b.name));
 }
